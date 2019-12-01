@@ -25,7 +25,5 @@ void screen_chooser(char *id, framebuffer *fb, sfml_obj *obj)
     if (nb == 3)
         dvd_f(fb, obj);
     if (nb == 4)
-        make_square(fb, obj);
-    if (nb == 5)
         line_tracer(fb, obj);
 }

@@ -15,8 +15,7 @@ SRC	=	main.c				\
 		randomess.c			\
 		screen_launcher.c	\
 		my_strcmp.c			\
-		my_putstr.c			\
-		square.c
+		my_putstr.c
 
 OBJ	=	$(SRC:.c=.o)
 
