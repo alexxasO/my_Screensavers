@@ -33,9 +33,8 @@ void close_button(sfml_obj *obj, sfEvent event, framebuffer *fb)
                 screen_chooser(obj->av, fb, obj);
             }
         }
-        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {
+        if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
             sfRenderWindow_close(obj->window);
-        }
     }
 }
 
