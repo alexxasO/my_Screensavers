@@ -15,6 +15,7 @@
 
 #define ABS(val) ((val < 0) ? -val : val)
 #define MAX(val, val2) ((val < val2) ? val2 : val)
+#define ID_MAX 4
 
 typedef struct fb {
     sfUint8 *pixels;

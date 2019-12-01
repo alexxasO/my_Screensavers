@@ -20,14 +20,18 @@ void close_button(sfml_obj *obj, sfEvent event, framebuffer *fb)
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(obj->window);
         if (sfKeyboard_isKeyPressed(sfKeyRight)) {
-            framebuffer_clear(fb);
-            obj->av[0] += 1;
-            screen_chooser(obj->av, fb, obj);
+            if (obj->av[0] - '0' < ID_MAX) {
+                framebuffer_clear(fb);
+                obj->av[0] += 1;
+                screen_chooser(obj->av, fb, obj);
+            }
         }
         if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
-            framebuffer_clear(fb);
-            obj->av[0] += -1;
-            screen_chooser(obj->av, fb, obj);
+            if (obj->av[0] - '0' > 0) {
+                framebuffer_clear(fb);
+                obj->av[0] += -1;
+                screen_chooser(obj->av, fb, obj);
+            }
         }
     }
 }

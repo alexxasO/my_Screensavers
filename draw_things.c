@@ -28,17 +28,19 @@ void draw_circle(framebuffer *fb, int x, int y, int rayon, sfColor color)
 
 void draw_line(framebuffer *fb, stCoo coord, stCoo coord2, sfColor color)
 {
-    float a = (coord2.y - coord.y) / (coord2.x - coord.x);
-    float b = coord.y - a * coord.x;
-    int step = ABS(coord.y - coord2.y) / MAX(ABS(coord.y - coord2.y),
-                ABS(coord.x - coord2.x));
+    int pt1 = coord2.y - coord.y;
+    int pt2 = coord2.x - coord.x;
+    float pt_ax = coord.x;
+    float pt_ay = coord.y;
+    float stepi = ((float)pt1 / (float)MAX(ABS(pt1), ABS(pt2)));
+    float stepj = ((float)pt2 / (float)MAX(ABS(pt1), ABS(pt2)));
 
-    for (float i = coord.x; ABS(coord2.x - (int)i) > 0; i += step) {
-        for (float v = coord.y; ABS(coord2.y - (int)v) > 0; v += step) {
-            if (v == a * i + b)
-                set_pixel(fb, (int)i, (int)v, color);
-            if (i == (v - b) / a)
-                set_pixel(fb, (int)i, (int)v, color);
-        }
+    for (float i = (float)coord.y; (int)i != coord2.y; i += stepi) {
+        set_pixel(fb, (int)pt_ax, (int)i, color);
+        pt_ax += stepj;
+    }
+    for (float j = (float)coord.x; (int)j != coord2.x; j += stepj) {
+        set_pixel(fb, (int)j, (int)pt_ay, color);
+        pt_ax += stepi;
     }
 }
