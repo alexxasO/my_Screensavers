@@ -9,15 +9,18 @@
 
 static float get_time(sfClock *clock)
 {
-    return sfTime_asMilliseconds(sfClock_getElapsedTime(clock));
+    return sfClock_getElapsedTime(clock).microseconds / 1000;
 }
 
 static void draw_sun(framebuffer *fb)
 {
-    sfColor col;
+    sfColor col = {0};
 
     for (int i = 100; i > 0; i--) {
-        col = sfColor_fromRGBA(255 - 1.8 * i, 255 - 1.8 * i, 0, 255);
+        col.r = 255 - 1.8 * i;
+        col.b = 0;
+        col.g = 255 - 1.8 * i;
+        col.a = 255;
         draw_circle(fb, fb->width / 2, fb->height / 2, i, col);
     }
 }
