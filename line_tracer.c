@@ -20,6 +20,8 @@ void line_tracer(framebuffer *fb, sfml_obj *obj)
         pt_a.y = pt_b.y;
         pt_b.x = generate_rand_num(fb->width);
         pt_b.y = generate_rand_num(fb->height);
+        if (generate_rand_num(200) == generate_rand_num(200))
+            framebuffer_clear(fb);
         update_screen(obj, fb);
         close_button(obj, event, fb);
     }
